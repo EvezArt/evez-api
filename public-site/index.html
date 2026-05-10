@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EVEZ API — AI for 1% of the price</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:#0a0a0a;color:#e8e8e8;line-height:1.6}
+.hero{text-align:center;padding:80px 20px 40px;max-width:800px;margin:0 auto}
+.hero h1{font-size:clamp(36px,8vw,64px);font-weight:800;margin-bottom:16px}
+.hero h1 span{background:linear-gradient(135deg,#6c5ce7,#a29bfe);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:20px;color:#999;max-width:500px;margin:0 auto 32px}
+.badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:48px}
+.badge{background:#141414;border:1px solid #2a2a2a;padding:8px 16px;border-radius:20px;font-size:14px}
+.badge strong{color:#00b894}
+.compare{max-width:800px;margin:0 auto;padding:0 20px 60px}
+.compare h2{text-align:center;margin-bottom:24px;font-size:24px}
+table{width:100%;border-collapse:collapse}
+th,td{padding:16px;text-align:left;border-bottom:1px solid #1e1e1e}
+th{color:#888;font-size:13px;text-transform:uppercase;letter-spacing:1px}
+.pricing{max-width:900px;margin:0 auto;padding:0 20px 60px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.plan{background:#141414;border:1px solid #2a2a2a;border-radius:16px;padding:32px;position:relative;transition:border-color .2s}
+.plan:hover{border-color:#6c5ce7}
+.plan.popular{border-color:#6c5ce7}
+.plan.popular::before{content:'POPULAR';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#6c5ce7;color:white;padding:4px 12px;border-radius:8px;font-size:11px;font-weight:700}
+.plan h3{font-size:20px;margin-bottom:8px}
+.plan .price{font-size:40px;font-weight:800;margin-bottom:4px}
+.plan .price span{font-size:16px;color:#888;font-weight:400}
+.plan .period{color:#666;font-size:14px;margin-bottom:16px}
+.plan ul{list-style:none;margin-bottom:24px}
+.plan li{padding:6px 0;font-size:14px;color:#bbb}
+.plan li::before{content:'✓ ';color:#00b894}
+.plan button{width:100%;padding:14px;border:none;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;transition:all .2s}
+.plan button.primary{background:#6c5ce7;color:white}
+.plan button.primary:hover{background:#a29bfe}
+.plan button.secondary{background:#1e1e1e;color:#e8e8e8;border:1px solid #2a2a2a}
+.plan button.secondary:hover{border-color:#6c5ce7}
+.code{max-width:800px;margin:0 auto;padding:0 20px 60px}
+.code h2{text-align:center;margin-bottom:24px;font-size:24px}
+.code pre{background:#141414;border:1px solid #2a2a2a;border-radius:12px;padding:20px;overflow-x:auto;font-family:'SF Mono','Fira Code',monospace;font-size:14px;line-height:1.8}
+.code pre .comment{color:#6a9955}
+.code pre .string{color:#ce9178}
+.code pre .keyword{color:#569cd6}
+footer{text-align:center;padding:40px 20px;color:#444;font-size:13px;border-top:1px solid #1e1e1e1}
+footer a{color:#6c5ce7}
+@media(max-width:600px){.pricing{grid-template-columns:1fr}.compare{overflow-x:auto}table{font-size:14px}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>AI that doesn't<br><span>cost a fortune</span></h1>
+  <p>OpenAI-compatible API. Drop-in replacement. 99% cheaper. No usage limits on free tier.</p>
+  <div class="badges">
+    <div class="badge"><strong>$0.002</strong>/1K tokens in</div>
+    <div class="badge"><strong>$0.006</strong>/1K tokens out</div>
+    <div class="badge"><strong>4 models</strong> including code & vision</div>
+    <div class="badge"><strong>Zero downtime</strong> since launch</div>
+  </div>
+</div>
+
+<div class="compare">
+  <h2>Price comparison (1M output tokens)</h2>
+  <table>
+    <tr><th>Provider</th><th>Model</th><th>Cost</th></tr>
+    <tr><td>OpenAI</td><td>GPT-4o</td><td style="color:#e17055">$17.50</td></tr>
+    <tr><td>Anthropic</td><td>Claude Sonnet</td><td style="color:#e17055">$15.00</td></tr>
+    <tr><td>Google</td><td>Gemini Pro</td><td style="color:#e17055">$7.00</td></tr>
+    <tr><td><strong>EVEZ</strong></td><td>evez-smart</td><td style="color:#00b894"><strong>$6.00</strong></td></tr>
+    <tr><td><strong>EVEZ</strong></td><td>evez-fast</td><td style="color:#00b894"><strong>$6.00</strong></td></tr>
+  </table>
+</div>
+
+<div class="pricing">
+  <div class="plan">
+    <h3>Free</h3>
+    <div class="price">$0<span>/mo</span></div>
+    <div class="period">100K tokens/month</div>
+    <ul>
+      <li>All 4 models</li>
+      <li>OpenAI-compatible API</li>
+      <li>Streaming support</li>
+      <li>Community support</li>
+    </ul>
+    <button class="secondary" onclick="signup('free')">Get API Key</button>
+  </div>
+  <div class="plan popular">
+    <h3>Pro</h3>
+    <div class="price">$5<span>/mo</span></div>
+    <div class="period">Unlimited tokens</div>
+    <ul>
+      <li>Everything in Free</li>
+      <li>Unlimited usage</li>
+      <li>Priority routing</li>
+      <li>Email support</li>
+      <li>Usage dashboard</li>
+    </ul>
+    <button class="primary" onclick="signup('pro')">Start Pro</button>
+  </div>
+  <div class="plan">
+    <h3>Business</h3>
+    <div class="price">$25<span>/mo</span></div>
+    <div class="period">Team + SLA</div>
+    <ul>
+      <li>Everything in Pro</li>
+      <li>5 team API keys</li>
+      <li>99.9% uptime SLA</li>
+      <li>Custom rate limits</li>
+      <li>Priority support</li>
+    </ul>
+    <button class="secondary" onclick="signup('business')">Contact Us</button>
+  </div>
+</div>
+
+<div class="code">
+  <h2>Switch in 30 seconds</h2>
+  <pre>
+<span class="comment">// Just change the baseURL — everything else stays the same</span>
+<span class="keyword">const</span> openai = <span class="keyword">new</span> OpenAI({
+  baseURL: <span class="string">"https://evez-api2.fly.dev/v1"</span>,
+  apiKey: <span class="string">"evez-your-api-key"</span>
+});
+
+<span class="keyword">const</span> response = <span class="keyword">await</span> openai.chat.completions.create({
+  model: <span class="string">"evez-smart"</span>,  <span class="comment">// or evez-code, evez-fast, evez-vision</span>
+  messages: [{ role: <span class="string">"user"</span>, content: <span class="string">"Hello!"</span> }]
+});
+  </pre>
+</div>
+
+<footer>
+  Built by <a href="https://github.com/EvezArt">EvezArt</a> · Powered by free infrastructure · <a href="https://evez-api2.fly.dev/docs">API Docs</a>
+</footer>
+
+<script>
+function signup(plan) {
+  if (plan === 'free') {
+    window.location.href = 'https://evez-api2.fly.dev/signup';
+  } else if (plan === 'pro') {
+    // TODO: Stripe checkout
+    alert('Pro signup coming soon! Email admin@evez.dev to get early access.');
+  } else {
+    window.location.href = 'mailto:admin@evez.dev?subject=Business Plan Inquiry';
+  }
+}
+</script>
+</body>
+</html>

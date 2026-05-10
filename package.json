@@ -1,0 +1,13 @@
+{
+  "name": "evez-api",
+  "version": "1.0.0",
+  "description": "EVEZ AI API - OpenAI-compatible wrapper around free Vultr inference",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "express": "^4.21.0",
+    "uuid": "^9.0.0"
+  }
+}
