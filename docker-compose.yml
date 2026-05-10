@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  evez-api:
+    build: .
+    ports:
+      - "9090:9090"
+    environment:
+      - VULTR_API_KEY=${VULTR_API_KEY}
+      - MASTER_KEY=${MASTER_KEY:-evez-admin-local}
+      - PORT=9090
+    restart: unless-stopped
