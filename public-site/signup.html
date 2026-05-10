@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Get EVEZ API Key — Free</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,sans-serif;background:#08080a;color:#e8e8e8;min-height:100vh;display:flex;align-items:center;justify-content:center}
+.card{max-width:440px;padding:48px 40px}h1{font-size:28px;margin-bottom:8px;letter-spacing:-0.5px}h1 span{color:#8b7cf6}
+p{color:#888;margin-bottom:24px;line-height:1.5;font-size:15px}
+input{width:100%;padding:14px 16px;background:#111118;border:1px solid #1e1e2e;border-radius:12px;color:#e8e8e8;font-size:16px;margin-bottom:16px;outline:none;transition:border-color .2s}
+input:focus{border-color:#8b7cf6}
+button{width:100%;padding:14px;background:#8b7cf6;border:none;border-radius:12px;color:white;font-size:16px;font-weight:600;cursor:pointer;transition:all .15s}
+button:hover{background:#a29bfe;transform:translateY(-1px)}
+#result{margin-top:24px;display:none}
+#result .key-box{background:#111118;border:1px solid #00b894;border-radius:12px;padding:16px;font-family:'SF Mono',Consolas,monospace;word-break:break-all;color:#00b894;margin:12px 0;font-size:14px}
+#result .meta{color:#666;font-size:13px;margin-top:8px}
+#result .meta b{color:#aaa}
+.copy-btn{margin-top:8px;padding:8px 16px;background:#1a1a2e;border:1px solid #2a2a3e;border-radius:8px;color:#8b7cf6;cursor:pointer;font-size:13px}
+.copy-btn:hover{border-color:#8b7cf6}
+a{color:#8b7cf6}
+</style></head><body><div class="card">
+<h1>Get your <span>free</span> key</h1>
+<p>100K tokens free. All 4 models. No credit card. Instant API key.</p>
+<input type="email" id="email" placeholder="you@company.com" onkeydown="if(event.key==='Enter')signup()">
+<button onclick="signup()">Get API Key →</button>
+<div id="result">
+<p style="color:#00b894;font-weight:600">✓ Key created! Copy it now.</p>
+<div class="key-box" id="apiKey"></div>
+<button class="copy-btn" onclick="navigator.clipboard.writeText(document.getElementById('apiKey').textContent);this.textContent='Copied!'">Copy Key</button>
+<div class="meta">
+<b>Base URL:</b> https://api.evez.dev/v1<br>
+<b>Models:</b> evez-smart, evez-code, evez-fast, evez-vision<br>
+<b>Credits:</b> 100,000 tokens
+</div>
+</div>
+</div>
+<script>
+async function signup(){
+  const e=document.getElementById('email').value;
+  if(!e||!e.includes('@')){document.getElementById('email').style.borderColor='#e74c3c';return}
+  const btn=document.querySelector('button');
+  btn.textContent='Creating key...';btn.disabled=true;
+  try {
+    const r=await fetch('/signup',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:e})});
+    const d=await r.json();
+    if(d.key){document.getElementById('apiKey').textContent=d.key;document.getElementById('result').style.display='block';btn.textContent='✓ Key Created';}
+    else{btn.textContent='Error — Try Again';btn.disabled=false;}
+  } catch(err) { btn.textContent='Error — Try Again'; btn.disabled=false; }
+}
+</script>
+</body></html>
