@@ -181,7 +181,7 @@ function trackUsage(key, model, tokens) {
 }
 
 // --- Admin ---
-const MASTER_KEY = process.env.MASTER_KEY || 'evez-admin-kr4cken2025';
+const MASTER_KEY = process.env.MASTER_KEY; // REQUIRED — no default. Set in env.
 function adminAuth(req, res, next) {
   const key = req.headers['x-admin-key'];
   if (key !== MASTER_KEY) return res.status(403).json({ error: 'Forbidden' });

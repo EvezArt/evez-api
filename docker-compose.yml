@@ -32,7 +32,7 @@ services:
       - "9090:9090"
     environment:
       PORT: 9090
-      MASTER_KEY: evez-admin-kr4cken2025
+      MASTER_KEY: ${MASTER_KEY}  # Read from env var
       DATABASE_URL: postgres://evez:evez_local_dev@postgres:5432/evez
       NATS_URL: nats://nats:4222
     depends_on:
