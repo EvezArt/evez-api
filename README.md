@@ -14,10 +14,10 @@
 ## Get Started — 30 Seconds
 
 ```bash
-# 1. Get a free API key at https://evez-api2.fly.dev/signup
+# 1. Get a free API key at http://66.135.1.200:9090/signup
 # 2. Swap one line of code:
 
-export OPENAI_BASE_URL=https://evez-api2.fly.dev/v1
+export OPENAI_BASE_URL=http://66.135.1.200:9090/v1
 export OPENAI_API_KEY=evez-your-key
 ```
 
@@ -25,7 +25,7 @@ export OPENAI_API_KEY=evez-your-key
 from openai import OpenAI
 
 client = OpenAI(
-    base_url="https://evez-api2.fly.dev/v1",
+    base_url="http://66.135.1.200:9090/v1",
     api_key="evez-your-key"
 )
 
@@ -70,8 +70,8 @@ VULTR_API_KEY=your-key MASTER_KEY=your-admin-key npm start
 
 ## Links
 
-- 🌐 [API](https://evez-api2.fly.dev)
-- 📝 [Get API Key](https://evez-api2.fly.dev/signup)
+- 🌐 [API](http://66.135.1.200:9090)
+- 📝 [Get API Key](http://66.135.1.200:9090/signup)
 - 💬 [Discord](https://discord.com/invite/clawd)
 - 📦 [GitHub](https://github.com/EvezArt/evez-api)
 
