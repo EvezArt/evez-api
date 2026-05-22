@@ -1,20 +1,24 @@
-name: CI Health Check
+name: CI
+
 on:
   push:
-    branches: [main, master]
+    branches: [main]
   pull_request:
-    branches: [main, master]
-  schedule:
-    - cron: '0 6 * * 1'
+    branches: [main]
+
 jobs:
-  health:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-node@v4
         with:
-          python-version: '3.11'
-      - name: Install and check
-        run: |
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-          find . -name '*.py' -not -path './.git/*' -exec python -m py_compile {} \;
+          node-version: '22'
+      - run: npm ci
+      - name: Start server
+        run: node src/index.js &
+        env:
+          MASTER_KEY: test-key
+          VULTR_API_KEY: test-key
+      - name: Health check
+        run: sleep 3 && curl -f http://localhost:9090/health
